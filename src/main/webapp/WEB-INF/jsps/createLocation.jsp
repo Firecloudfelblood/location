@@ -7,17 +7,27 @@
 <title>Create Location</title>
 </head>
 <body>
-<form action="" method="">
-    Id: <input type="text" name="id">
-    Code: <input type="text" name="code">
-    Name: <input type="text" name="name">
+<div id="master">
+    <div id="form">
+<form action="saveLoc" method="post">
 
-    Type: Urban <input type="radio" name="type">
-          Rural <input type="radio" name="type">
+    <div class="labels"><label for="id"  > Id:  </label></div> <div class="datos"><input id="id"   type="text" name="id"  ></div>
+    <div class="labels"><label for="code"> Code:</label></div> <div class="datos"><input id="code" type="text" name="code"></div>
+    <div class="labels"><label for="name"> Name:</label></div> <div class="datos"><input id="name" type="text" name="name"></div>
 
-    <input type="Submit" value="Save">
+    <div class="labels">Type: </div><div  class="radiob">
+                        Urban <input type="radio" name="type" value="URBAN">
+                        Rural <input type="radio" name="type" value="RURAL">
+                    </div>
+
+    <div class="primary"><input type="Submit" value="Save" class="button"></div>
 
 </form>
-
+</div>
+${msg}
+</div>
+<div id="lista">
+    <a href="displayLocations">View All</a>
+</div>
 </body>
 </html>
