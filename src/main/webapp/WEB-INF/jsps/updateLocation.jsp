@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Create Location</title>
+<title>Update Location</title>
 </head>
 <body>
 <div id="master">

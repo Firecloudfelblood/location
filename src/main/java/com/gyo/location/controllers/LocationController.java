@@ -1,6 +1,9 @@
 package com.gyo.location.controllers;
 
+import com.gyo.location.repos.LocationRepository;
 import com.gyo.location.service.LocationService;
+import com.gyo.location.util.EmailUtil;
+import com.gyo.location.util.ReportUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,6 +20,15 @@ public class LocationController {
     @Autowired
     LocationService service;
 
+    @Autowired
+    LocationRepository repository;
+
+    @Autowired
+    EmailUtil emailUtil;
+
+    @Autowired
+    ReportUtil reportUtil;
+
     @RequestMapping("/showCreate")
     public String  showCreate(){
 
@@ -29,6 +41,7 @@ public class LocationController {
        Location locationsaved = service.saveLocation(location);
        String msg = "Location saved with id: "+locationsaved.getId();
        modelMap.addAttribute("msg", msg);
+       emailUtil.sendEmail("joe.jack09091981@gmail.com", "Location Saved", "Location saved succesfully and about to send the response");
         return "createLocation";
     }
 
@@ -64,6 +77,13 @@ public class LocationController {
         List<Location> locations = service.getAllLocations();
         modelMap.addAttribute("locations", locations);
         return "displayLocations";
+    }
+    @RequestMapping("/generateReport")
+    public String generateReport(){
+
+        List<Object[]> data = repository.findTypeAndTypeCount();
+
+        return "report";
     }
 
 }
